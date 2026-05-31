@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Button, Card, Badge } from '@/components/ui'
 import styles from './Home.module.css'
 
