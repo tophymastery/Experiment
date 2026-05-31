@@ -21,6 +21,10 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .logo {
@@ -44,15 +48,19 @@
 .navLink {
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-md);
+  border: none;
+  background: none;
+  font-family: var(--font-sans);
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-neutral-600);
+  cursor: pointer;
   transition: background-color var(--transition-fast), color var(--transition-fast);
-  text-decoration: none;
 }
 
-.navLink:hover {
-  background-color: var(--color-neutral-100);
-  color: var(--color-neutral-900);
-  text-decoration: none;
+.navLink:hover { background-color: var(--color-neutral-100); color: var(--color-neutral-900); }
+
+.navLink.active {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
 }
