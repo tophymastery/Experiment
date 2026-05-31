@@ -1,22 +1,36 @@
 import React from 'react'
 import styles from './Header.module.css'
+import type { Page } from '@/App'
 
 interface HeaderProps {
-  title?: string
+  page: Page
+  onNavigate: (p: Page) => void
 }
 
-export function Header({ title = 'Experiment' }: HeaderProps) {
+const NAV: { id: Page; label: string }[] = [
+  { id: 'home',      label: 'Home' },
+  { id: 'analytics', label: 'Analytics' },
+  { id: 'logs',      label: 'Logs' },
+]
+
+export function Header({ page, onNavigate }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <div className={styles.brand}>
+        <button className={styles.brand} onClick={() => onNavigate('home')}>
           <span className={styles.logo} aria-hidden="true">⬡</span>
-          <span className={styles.title}>{title}</span>
-        </div>
+          <span className={styles.title}>Experiment</span>
+        </button>
         <nav className={styles.nav} aria-label="Main navigation">
-          <a href="#home" className={styles.navLink}>Home</a>
-          <a href="#components" className={styles.navLink}>Components</a>
-          <a href="#docs" className={styles.navLink}>Docs</a>
+          {NAV.map(n => (
+            <button
+              key={n.id}
+              className={[styles.navLink, page === n.id ? styles.active : ''].join(' ')}
+              onClick={() => onNavigate(n.id)}
+            >
+              {n.label}
+            </button>
+          ))}
         </nav>
       </div>
     </header>
