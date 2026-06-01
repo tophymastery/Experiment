@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Card, Badge, MetricCard, Tabs, SearchInput, Select, LogLevelBadge, EmptyState } from '@/components/ui'
+import { Button, Card, Badge, MetricCard, Tabs, SearchInput, Select, LogLevelBadge, EmptyState, DateRangePicker } from '@/components/ui'
 import styles from './Home.module.css'
 import type { Page } from '@/App'
 
@@ -123,6 +123,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
             </Card>
           )}
         </Tabs>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Date Range Picker</h2>
+        <p className={styles.sectionSubtitle}>
+          Dual-handle slider · Step selector (15m / 30m / 1h / 2h) · 5-hour max · Click date or time to edit directly
+        </p>
+        <DateRangePicker maxHours={5} />
       </section>
     </div>
   )
